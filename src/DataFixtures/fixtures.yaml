@@ -1,0 +1,14 @@
+App\Entity\Property:
+    property{1..30}:
+        title: '<catchPhrase()>'
+        description: '<realText()>'
+        surface: '<numberBetween(40, 200)>'
+        rooms: '<numberBetween(1, 7)>'
+        bedrooms: '<numberBetween(1, 4)>'
+        floor: '<numberBetween(1, 10)>'
+        price: '<numberBetween(50000, 300000)>'
+        heat: '<numberBetween(0, 2)>'
+        city: '<city()>'
+        address: '<streetAddress()>'
+        postal_code: '<postcode()>'
+        sold: '0'
