@@ -12,5 +12,17 @@
             vero
             voluptate voluptatem. Explicabo?
         </p>
+        <article class="row">
+            {% for property in properties %}
+                <div class="card text-white bg-primary m-1 col-3">
+                    <div class="card-header">{{ property.city }}</div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ property.title }}</h4>
+                        <h5 class="card-title">{{ property.price }} €</h5>
+                        <p class="card-text">{{ property.description|u.truncate(50, '...') }}.</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </article>
     </header>
 {% endblock %}

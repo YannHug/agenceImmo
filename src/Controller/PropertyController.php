@@ -19,7 +19,7 @@ class PropertyController extends AbstractController
     {
         return $this->render('property/browse.html.twig', [
             'current_page' => 'properties',
-            'properties' => $propertyRepository->findAll(),
+            'properties' => $propertyRepository->findAllNotSold(),
         ]);
     }
 }

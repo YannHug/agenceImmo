@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,32 +20,31 @@ class PropertyRepository extends ServiceEntityRepository
         parent::__construct($registry, Property::class);
     }
 
-    // /**
-    //  * @return Property[] Returns an array of Property objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Property[]
+     */
+    public function findAllNotSold(): array
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->findNotSold()
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Property
+    /**
+     * @return Property[]
+     */
+    public function findLatest(): array
+    {
+        return $this->findNotSold()
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
+
+    private function findNotSold(): QueryBuilder
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->where('p.sold = false');
     }
-    */
 }
