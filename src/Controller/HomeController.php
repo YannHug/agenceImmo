@@ -17,6 +17,7 @@ class HomeController extends AbstractController
     public function browse(): Response
     {
         return $this->render('home/browse.html.twig', [
+            'current_page' => 'home',
         ]);
     }
 }

@@ -17,6 +17,7 @@ class PropertyController extends AbstractController
     public function browse(): Response
     {
         return $this->render('property/browse.html.twig', [
+            'current_page' => 'properties',
         ]);
     }
 }
