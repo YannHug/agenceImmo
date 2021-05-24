@@ -1,0 +1,27 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-6">{{ form_row(form.title, { 'label': 'Titre' }) }}</div>
+    <div class="col-md-3">{{ form_row(form.surface, { 'label': 'Surface Habitable' }) }}</div>
+    <div class="col-md-3">{{ form_row(form.price, { 'label': 'Prix' }) }}</div>
+</div>
+<div class="row">
+    <div class="col-md-3">{{ form_row(form.rooms, { 'label': 'Nombre de pièces' }) }}</div>
+    <div class="col-md-3">{{ form_row(form.bedrooms, { 'label': 'Nombre de chambres' }) }}</div>
+    <div class="col-md-3">{{ form_row(form.heat, { 'label': 'Type de chauffage' }) }}</div>
+    <div class="col-md-3">{{ form_row(form.floor, { 'label': 'Etage' }) }}</div>
+</div>
+<div class="row">
+    <div class="col-md-5">{{ form_row(form.address, { 'label': 'Adresse' }) }}</div>
+    <div class="col-md-4">{{ form_row(form.city, { 'label': 'Ville' }) }}</div>
+    <div class="col-md-2">{{ form_row(form.postal_code, { 'label': 'Code Postal' }) }}</div>
+    <div class="col-md-1">{{ form_row(form.sold, { 'label': 'Vendu' }) }}</div>
+</div>
+<div class="row">
+    <div class="col-md-12">{{ form_row(form.description, { 'label': 'Description' }) }}</div>
+</div>
+<div class="mt-3">
+<button class="btn btn-success">{{ button|default('Enregistrer') }}</button>
+<a href="{{ path('admin_property_browse') }}" class="btn btn-primary mx-4">Retour à la liste</a>
+</div>
+
+{{ form_end(form) }}

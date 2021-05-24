@@ -35,9 +35,8 @@ class AdminPropertyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($property);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Bien modifié avec succès');
             return $this->redirectToRoute('admin_property_browse');
         }
 
@@ -45,5 +44,47 @@ class AdminPropertyController extends AbstractController
             'property'=> $property,
             'form'=> $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/add", name="add")
+     */
+    public function add(Request $request): Response
+    {
+        $property = new Property();
+        $form = $this->createForm(PropertyType::class, $property);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($property);
+            $entityManager->flush();
+            $this->addFlash('success', 'Bien ajouté avec succès');
+
+            return $this->redirectToRoute('admin_property_browse');
+        }
+
+        return $this->render('admin/property/add.html.twig', [
+            'property'=> $property,
+            'form'=> $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="delete", requirements={"id"="\d+"}, methods={"DELETE"})
+     */
+    public function delete(Property $property, Request $request): Response
+    {
+        $token = $request->request->get('_token');
+        if ($this->isCsrfTokenValid('delete' . $property->getId() , $token)) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($property);
+            $em->flush();
+            $this->addFlash('success', 'Bien supprimé avec succès');
+
+            return $this->redirectToRoute('admin_property_browse');
+        }
+        // Si le token n'est pas valide, on lance une exception Access Denied
+        throw $this->createAccessDeniedException('Le token n\'est pas valide.');
     }
 }
