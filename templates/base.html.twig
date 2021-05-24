@@ -19,11 +19,11 @@
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link {% if current_page == 'home' %} active {% endif %}"
+                        <a class="nav-link {% if current_page is defined  and current_page == 'home' %} active {% endif %}"
                            href="{{ path('home_browse') }}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if current_page == 'properties' %} active {% endif %}"
+                        <a class="nav-link {% if current_page is defined and current_page == 'properties' %} active {% endif %}"
                            href="{{ path('property_browse') }}">Acheter</a>
                     </li>
                 </ul>
