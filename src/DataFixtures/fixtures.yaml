@@ -12,3 +12,4 @@ App\Entity\Property:
         address: '<streetAddress()>'
         postal_code: '<postcode()>'
         sold: '0'
+        createdAt: '<dateTimeBetween()>'
