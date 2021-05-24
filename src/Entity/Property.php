@@ -12,9 +12,9 @@ class Property
 {
 
     const HEAT = [
-        0 => 'electric',
-        1 => 'gaz',
-        2 => 'fioul',
+        0 => 'Electric',
+        1 => 'Gaz',
+        2 => 'Fioul',
     ];
 
     /**
@@ -183,6 +183,11 @@ class Property
         return $this;
     }
 
+    public function formattedPrice(): string
+    {
+        return number_format($this->price, 0, '', ' ');
+    }
+
     public function getHeat(): ?int
     {
         return $this->heat;
@@ -193,6 +198,11 @@ class Property
         $this->heat = $heat;
 
         return $this;
+    }
+
+    public function getHeatType()
+    {
+        return self::HEAT[$this->heat];
     }
 
     public function getCity(): ?string

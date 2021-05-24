@@ -3,7 +3,7 @@
 {% block title %}Bienvenue dans notre agence{% endblock %}
 
 {% block body %}
-    <header class="container text-center mt-3">
+    <div class="p-5 mb-4 bg-light rounded-3">
         <h1>Agence ImmoIpsum</h1>
         <p class="">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, adipisci asperiores aspernatur, assumenda
@@ -12,17 +12,9 @@
             vero
             voluptate voluptatem. Explicabo?
         </p>
-        <article class="row">
-            {% for property in properties %}
-                <div class="card text-white bg-primary m-1 col-3">
-                    <div class="card-header">{{ property.city }}</div>
-                    <div class="card-body">
-                        <h4 class="card-title">{{ property.title }}</h4>
-                        <h5 class="card-title">{{ property.price }} €</h5>
-                        <p class="card-text">{{ property.description|u.truncate(50, '...') }}.</p>
-                    </div>
-                </div>
-            {% endfor %}
-        </article>
+    </div>
+    <header class="container text-center mt-3">
+        <h2>Les derniers biens</h2>
+        {% include 'partials/_cards.html.twig' %}
     </header>
 {% endblock %}
