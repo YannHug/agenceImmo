@@ -21,6 +21,7 @@ class AdminPropertyController extends AbstractController
     public function browse(PropertyRepository $properties): Response
     {
         return $this->render('admin/property/browse.html.twig', [
+            'current_page' => 'administration',
             'properties'=> $properties->findAll()
         ]);
     }

@@ -26,6 +26,16 @@
                         <a class="nav-link {% if current_page is defined and current_page == 'properties' %} active {% endif %}"
                            href="{{ path('property_browse') }}">Acheter</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_page is defined and current_page == 'administration' %} active {% endif %}"
+                           href="{{ path('admin_property_browse') }}">Administration</a>
+                    </li>
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
