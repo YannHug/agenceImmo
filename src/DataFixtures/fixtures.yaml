@@ -1,7 +1,7 @@
 App\Entity\Property:
     property{1..30}:
         title: '<words(3, true)>'
-        description: '<realText()>'
+        description: '<Text()>'
         surface: '<numberBetween(40, 200)>'
         rooms: '<numberBetween(1, 7)>'
         bedrooms: '<numberBetween(1, 4)>'
@@ -13,3 +13,4 @@ App\Entity\Property:
         postal_code: '<postcode()>'
         sold: '0'
         createdAt: '<dateTimeBetween()>'
+        image: 'http://lorempixel.com/400/300/city'
